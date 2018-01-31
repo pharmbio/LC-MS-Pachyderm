@@ -1,0 +1,23 @@
+{
+  "pipeline": {
+    "name": "AggregateMetFrag"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "zip -r metfrag.zip /pfs/MetFragClient",
+    "/usr/local/bin/aggregateMetfrag.r inputs=metfrag.zip realNames=metfrag.zip output=/pfs/out/aggmetfrag.csv filetype=zip"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "MetFragClient",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m"
+}

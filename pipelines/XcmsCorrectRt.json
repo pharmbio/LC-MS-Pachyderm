@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "XcmsCorrectRt"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/XcmsGroupPeaks_1/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "dash='-'",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "/usr/local/bin/retCor.r input=${filename} output=/pfs/out/${shortname}${dash}corrected.rdata method=loess",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "XcmsGroupPeaks_1",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

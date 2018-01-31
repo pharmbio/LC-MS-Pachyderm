@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "XcmsBlankFilter"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/XcmsGroupPeaks_2/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "dash='-'",
+    "/usr/local/bin/blankfilter.r input=${filename} output=/pfs/out/${shortname}${dash}bf.xml method=max blank=blank sample=sample rest=T",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "XcmsGroupPeaks_2",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

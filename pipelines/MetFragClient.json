@@ -1,0 +1,38 @@
+{
+  "pipeline": {
+    "name": "MetFragClient"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/metfrag-cli-batch:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/Msms2MetFrag/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "firstname=${shortname%.*}",
+    "java -Xmx2048m -Xms1024m -jar /usr/local/bin/MetFragCLI.jar `cat ${filename}` ResultsFile=/pfs/out/${firstname}.csv NumberThreads=1 LocalDatabasePath=/pfs/params/hmdb_2017-07-23.csv",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 8
+  },
+  "input": {
+    "cross": [
+      {
+        "atom": {
+    "repo": "Msms2MetFrag",
+    "glob": "/*"
+  }
+      },
+      {
+        "atom": {
+    "repo": "params",
+    "glob": "/"
+  }
+      }
+    ]
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

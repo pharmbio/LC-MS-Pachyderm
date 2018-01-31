@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "CameraFindAdducts"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/CameraGroup/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "dash='-'",
+    "/usr/local/bin/findAdducts.r input=${filename} output=/pfs/out/${shortname}${dash}adducts.rdata ppm=10 polarity=positive output.pdf=/pfs/out/${shortname}${dash}adducts.pdf plotpdf=false rules=primary",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "CameraGroup",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

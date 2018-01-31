@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "CameraGroup"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/CameraAnnotatePeaks/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "dash='-'",
+    "/usr/local/bin/groupFWHM.r input=${filename} output=/pfs/out/${shortname}${dash}camgr.rdata sigma=8 perfwhm=0.6 intval=maxo",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "CameraAnnotatePeaks",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

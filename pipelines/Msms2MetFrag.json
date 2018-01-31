@@ -1,0 +1,39 @@
+{
+  "pipeline": {
+    "name": "Msms2MetFrag"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "dte=$(date '+%d_%m_%Y_%H_%M')",
+    "dash='_'",
+    "MAP_IN=$(find /pfs/MapMsms2Camera -name \"*.rdata\")",
+    "MAP_IN=$(echo $MAP_IN | sed 's/ /,/g')",
+    "CAM_IN=$(find /pfs/CameraFindIsotopes -name \"*.rdata\")",
+    "CAM_IN=$(echo $CAM_IN | sed 's/ /,/g')",
+    "/usr/local/bin/MS2ToMetFrag.r inputCAMERA=$(echo $CAM_IN) inputMS2=$(echo $MAP_IN) output=/pfs/out precursorppm=10 fragmentppm=30 fragmentabs=0.05 database=LocalCSV mode=pos adductRules=primary maxSpectra=100000 minPeaks=0"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "cross": [
+      {
+        "atom": {
+    "repo": "MapMsms2Camera",
+    "glob": "/"
+  }
+      },
+      {
+        "atom": {
+    "repo": "CameraFindIsotopes",
+    "glob": "/"
+  }
+      }
+    ]
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

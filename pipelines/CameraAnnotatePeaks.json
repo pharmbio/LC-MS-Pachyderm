@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "CameraAnnotatePeaks"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/XcmsDilutionFilter/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "dash='-'",
+    "/usr/local/bin/xsAnnotate.r input=${filename} output=/pfs/out/${shortname}${dash}ann.rdata",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "XcmsDilutionFilter",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

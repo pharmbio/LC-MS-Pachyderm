@@ -1,0 +1,27 @@
+{
+  "pipeline": {
+    "name": "PeakPicker"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/FileFilter/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "PeakPickerHiRes -in ${filename} -out /pfs/out/${shortname}",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 8
+  },
+  "input": {
+    "atom": {
+      "repo": "FileFilter",
+      "glob": "/*"
+    }
+  },
+  "scale_down_threshold": "10m",
+  "max_queue_size": 1
+}

@@ -1,0 +1,28 @@
+{
+  "pipeline": {
+    "name": "ReadMsms"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/ms2/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "/usr/local/bin/readMS2MSnBase.r input=${filename} output=/pfs/out/${shortname}.rdata",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 8
+  },
+  "input": {
+    "atom": {
+      "repo": "ms2",
+      "glob": "/*"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

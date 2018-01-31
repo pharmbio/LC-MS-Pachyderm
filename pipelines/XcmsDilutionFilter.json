@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "XcmsDilutionFilter"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/XcmsBlankFilter/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "dash='-'",
+    "/usr/local/bin/dilutionfilter.r input=${filename} output=/pfs/out/${shortname}${dash}df.xml Corto=1,2,3 dilution=d1,d2,d3 pvalue=0.1 corcut=0.5 abs=T",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "XcmsBlankFilter",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

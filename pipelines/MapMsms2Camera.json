@@ -1,0 +1,41 @@
+{
+  "pipeline": {
+    "name": "MapMsms2Camera"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "dte=$(date '+%d_%m_%Y_%H_%M')",
+    "dash='-'",
+    "SCORES_IN=$(find /pfs/ReadMsms -name \"*.rdata\")",
+    "SCORES_IN=$(echo $SCORES_IN | sed 's/ /,/g')",
+    "echo $SCORES_IN",
+    "CAMERA_IN=$(find /pfs/CameraFindIsotopes -name \"*.rdata\")",
+    "CAMERA_IN=$(echo $CAMERA_IN | sed 's/ /,/g')",
+    "echo $CAMERA_IN",
+    "/usr/local/bin/mapMS2ToCamera.r inputCAMERA=$(echo $CAMERA_IN) inputMS2=$(echo $SCORES_IN) output=/pfs/out/camera.rdata ppm=10 RT=10"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "cross": [
+      {
+        "atom": {
+    "repo": "ReadMsms",
+    "glob": "/"
+  }
+      },
+      {
+        "atom": {
+    "repo": "CameraFindIsotopes",
+    "glob": "/"
+  }
+      }
+    ]
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

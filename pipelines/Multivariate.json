@@ -1,0 +1,24 @@
+{
+  "pipeline": {
+    "name": "Multivariate"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/multivariate:v2.3.10_cv1.1.18",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "echo Performing multivariate analysis...",
+    "multivariate_wrapper.R dataMatrix_in /pfs/CameraPrepareOutputMulti/peaktable.txt sampleMetadata_in /pfs/CameraPrepareOutputMulti/metadata.txt variableMetadata_in /pfs/CameraPrepareOutputMulti/vars.txt respC groups predI 3 orthoI 0 testL FALSE opgC default opcC default sampleMetadata_out /pfs/out/mv_meta.tsv variableMetadata_out /pfs/out/mv_vars.tsv figure /pfs/out/mv_fig.pdf info /pfs/out/mv_info.txt"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "CameraPrepareOutputMulti",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "10m",
+  "max_queue_size": 1
+}

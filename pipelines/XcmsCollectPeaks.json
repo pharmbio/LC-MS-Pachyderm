@@ -1,0 +1,27 @@
+{
+  "pipeline": {
+    "name": "XcmsCollectPeaks"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "dte=$(date '+%d_%m_%Y_%H_%M')",
+    "dash='-'",
+    "FILES=$(find /pfs/XcmsFindPeaks -name \"*.rdata\")",
+    "FILES=$(echo $FILES | sed 's/ /,/g')",
+    "/usr/local/bin/xcmsCollect.r input=$(echo $FILES) output=/pfs/out/${dte}${dash}collection.rdata"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "XcmsFindPeaks",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

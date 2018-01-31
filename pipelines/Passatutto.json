@@ -1,0 +1,28 @@
+{
+  "pipeline": {
+    "name": "Passatutto"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/passatutto:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/AggregateMetFrag/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "dash='-'",
+    "/usr/local/bin/metfragPEP.r input=${filename} score=FragmenterScore output=/pfs/out/${shortname}pep.txt",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "AggregateMetFrag",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m"
+}

@@ -1,0 +1,39 @@
+{
+  "pipeline": {
+    "name": "XcmsFindPeaks"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/PeakPicker/*;",
+    "do",
+    "dash='-'",
+    "shortname=$(basename $filename)",
+    "noext=${shortname%.*}",
+    "/usr/local/bin/findPeaks.r input=${filename} output=/pfs/out/${noext}${dash}peaks.rdata ppm=5 peakwidthLow=4 peakwidthHigh=30 noise=1000 polarity=positive realFileName=${shortname} phenoFile=/pfs/params/sampleInfo.csv phenocol=class",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 8
+  },
+  "input": {
+    "cross": [
+      {
+        "atom": {
+    "repo": "params",
+    "glob": "/"
+  }
+      },
+      {
+        "atom": {
+    "repo": "PeakPicker",
+    "glob": "/*"
+  }
+      }
+    ]
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}

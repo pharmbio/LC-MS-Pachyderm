@@ -1,0 +1,30 @@
+{
+  "pipeline": {
+    "name": "CameraFindIsotopes"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:latest",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/CameraFindAdducts/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "dash='-'",
+    "shortname=$(echo $shortname | cut -d'-' -f1)",
+    "/usr/local/bin/findIsotopes.r input=${filename} output=/pfs/out/${shortname}${dash}isotopes.rdata maxcharge=3",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "CameraFindAdducts",
+      "glob": "/"
+    }
+  },
+  "scale_down_threshold": "5m",
+  "max_queue_size": 1
+}
