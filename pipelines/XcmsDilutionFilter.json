@@ -12,7 +12,7 @@
     "shortname=${shortname%.*}",
     "shortname=$(echo $shortname | cut -d'-' -f1)",
     "dash='-'",
-    "/usr/local/bin/dilutionfilter.r input=${filename} output=/pfs/out/${shortname}${dash}df.xml Corto=1,2,3 dilution=d1,d2,d3 pvalue=0.1 corcut=0.5 abs=T",
+    "/usr/local/bin/dilutionfilter.r input=${filename} output=/pfs/out/${shortname}${dash}df.xml Corto=1,2,3,4,5,6,7 dilution=d1,d2,d3,d4,d5,d6,d7 pvalue=0.1 corcut=0.5 abs=T",
     "done"
     ]
   },
