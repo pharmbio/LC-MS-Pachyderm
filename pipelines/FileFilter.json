@@ -9,7 +9,7 @@
     "for filename in /pfs/ms1/*;",
     "do",
     "shortname=$(basename $filename)",
-    "FileFilter -in ${filename} -out /pfs/out/${shortname}",
+    "FileFilter -in ${filename} -out /pfs/out/${shortname} -rt 20:800 -mz 100:500",
     "done"
     ]
   },
