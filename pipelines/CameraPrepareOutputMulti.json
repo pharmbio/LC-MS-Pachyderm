@@ -12,7 +12,7 @@
     "CAMERA_IN=$(echo $CAMERA_IN | sed 's/ /,/g')",
     "SCORES_IN=$(find /pfs/Passatutto -name \"*.txt\")",
     "SCORES_IN=$(echo $SCORES_IN | sed 's/ /,/g')",
-    "/usr/local/bin/prepareOutput.r inputcamera=$(echo $CAMERA_IN) inputscores=$(echo $SCORES_IN) inputpheno=/pfs/params/sampleInfo.csv ppm=10 rt=10 higherTheBetter=false scoreColumn=q.value impute=true typeColumn=type selectedType=sample rename=true renameCol=rename onlyReportWithID=false combineReplicate=false combineReplicateColumn=rep log=false sampleCoverage=50 sampleCoverageMethod=global outputPeakTable=/pfs/out/peaktable.txt outputVariables=/pfs/out/vars.txt outputMetaData=/pfs/out/metadata.txt"
+    "/usr/local/bin/prepareOutput.r inputcamera=$(echo $CAMERA_IN) inputscores=$(echo $SCORES_IN) inputpheno=/pfs/params/sampleInfo.csv ppm=10 rt=10 higherTheBetter=false scoreColumn=q.value impute=true typeColumn=type selectedType=sample rename=true renameCol=rename onlyReportWithID=false combineReplicate=true combineReplicateColumn=rep log=false sampleCoverage=50 sampleCoverageMethod=global outputPeakTable=/pfs/out/peaktable.txt outputVariables=/pfs/out/vars.txt outputMetaData=/pfs/out/metadata.txt"
     ]
   },
   "parallelism_spec": {
