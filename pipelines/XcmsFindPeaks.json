@@ -16,7 +16,7 @@
     ]
   },
   "parallelism_spec": {
-    "constant": 8
+    "constant": 25
   },
   "input": {
     "cross": [
@@ -34,6 +34,6 @@
       }
     ]
   },
-  "scale_down_threshold": "5m",
+  "scale_down_threshold": "2s",
   "max_queue_size": 1
 }

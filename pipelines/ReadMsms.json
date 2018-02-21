@@ -23,6 +23,6 @@
       "glob": "/*"
     }
   },
-  "scale_down_threshold": "5m",
+  "scale_down_threshold": "2s",
   "max_queue_size": 1
 }

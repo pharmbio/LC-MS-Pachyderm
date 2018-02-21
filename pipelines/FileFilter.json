@@ -14,7 +14,7 @@
     ]
   },
   "parallelism_spec": {
-    "constant": 8
+    "constant": 25
   },
   "input": {
     "atom": {
@@ -22,5 +22,5 @@
       "glob": "/*"
     }
   },
-  "scale_down_threshold": "10m"
+  "scale_down_threshold": "2s"
 }
