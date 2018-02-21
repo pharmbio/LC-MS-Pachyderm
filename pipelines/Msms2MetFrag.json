@@ -12,7 +12,7 @@
     "MAP_IN=$(echo $MAP_IN | sed 's/ /,/g')",
     "CAM_IN=$(find /pfs/CameraFindIsotopes -name \"*.rdata\")",
     "CAM_IN=$(echo $CAM_IN | sed 's/ /,/g')",
-    "/usr/local/bin/MS2ToMetFrag.r inputCAMERA=$(echo $CAM_IN) inputMS2=$(echo $MAP_IN) output=/pfs/out precursorppm=10 fragmentppm=30 fragmentabs=0.05 database=LocalCSV mode=pos adductRules=primary maxSpectra=100000 minPeaks=0"
+    "/usr/local/bin/MS2ToMetFrag.r inputCAMERA=$(echo $CAM_IN) inputMS2=$(echo $MAP_IN) output=/pfs/out precursorppm=10 fragmentppm=30 fragmentabs=0.05 database=LocalCSV mode=pos adductRules=primary maxSpectra=75000 minPeaks=0"
     ]
   },
   "parallelism_spec": {
