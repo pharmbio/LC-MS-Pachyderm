@@ -9,7 +9,7 @@
     "for filename in /pfs/FileFilter/*;",
     "do",
     "shortname=$(basename $filename)",
-    "PeakPickerHiRes -in ${filename} -out /pfs/out/${shortname}",
+    "PeakPickerHiRes -in ${filename} -out /pfs/out/${shortname} -algorithm:signal_to_noise 1",
     "done"
     ]
   },
