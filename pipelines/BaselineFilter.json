@@ -1,0 +1,26 @@
+{
+  "pipeline": {
+    "name": "BaselineFilter"
+  },
+   "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/NoiseFilterGaussian/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "BaselineFilter -in ${filename} -out /pfs/out/${shortname} -force true",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 25
+  },
+  "input": {
+    "atom": {
+      "repo": "NoiseFilterGaussian",
+      "glob": "/*"
+    }
+  },
+  "scale_down_threshold": "2s"
+}

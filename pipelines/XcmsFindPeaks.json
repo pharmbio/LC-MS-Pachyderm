@@ -6,7 +6,7 @@
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/PeakPicker/*;",
+    "for filename in /pfs/BaselineFilter/*;",
     "do",
     "dash='-'",
     "shortname=$(basename $filename)",
@@ -28,7 +28,7 @@
       },
       {
         "atom": {
-    "repo": "PeakPicker",
+    "repo": "BaselineFilter",
     "glob": "/*"
   }
       }
