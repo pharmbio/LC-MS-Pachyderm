@@ -9,7 +9,7 @@
     "for filename in /pfs/NoiseFilterGaussian/*;",
     "do",
     "shortname=$(basename $filename)",
-    "BaselineFilter -in ${filename} -out /pfs/out/${shortname} -force true",
+    "BaselineFilter -in ${filename} -out /pfs/out/${shortname} -force",
     "done"
     ]
   },

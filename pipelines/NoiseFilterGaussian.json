@@ -9,7 +9,7 @@
     "for filename in /pfs/PeakPicker/*;",
     "do",
     "shortname=$(basename $filename)",
-    "NoiseFilterGaussian -in ${filename} -out /pfs/out/${shortname} -force true",
+    "NoiseFilterGaussian -in ${filename} -out /pfs/out/${shortname} -force",
     "done"
     ]
   },
