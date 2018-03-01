@@ -6,11 +6,11 @@
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/FeatureFinder/*;",
+    "for filename in /pfs/PeakPicker/*;",
     "do",
     "shortname=$(basename $filename)",
     "noext=${shortname%.*}",
-    "PrecursorMassCorrector -in /pfs/PeakPicker/${noext}.mzML -feature_in ${filename} -max_charge 1",
+    "PrecursorMassCorrector -in ${filename} -feature_in /pfs/FeatureFinder/${noext}.featureXML -out /pfs/out/${noext}.mzML -max_charge 1",
     "done"
     ]
   },
@@ -22,14 +22,13 @@
       {
         "atom": {
     "repo": "PeakPicker",
-    "lazy": true,
-    "glob": "/"
+    "glob": "/*"
   }
       },
       {
         "atom": {
     "repo": "FeatureFinder",
-    "glob": "/*"
+    "glob": "/"
   }
       }
     ]
