@@ -1,15 +1,16 @@
 {
   "pipeline": {
-    "name": "NoiseFilterGaussian"
+    "name": "FeatureFinder"
   },
-   "transform": {
+  "transform": {
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/PeakPicker/*;",
     "do",
     "shortname=$(basename $filename)",
-    "NoiseFilterGaussian -in ${filename} -out /pfs/out/${shortname} -force",
+    "shortname=${shortname%.*}",
+    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}.featureXML -noise_threshold_int 1000 -mass_error_ppm 5 -max_trace_length 30 -width_filtering auto -isotope_filtering_model metabolites (5% RMS)",
     "done"
     ]
   },
@@ -22,5 +23,5 @@
       "glob": "/*"
     }
   },
-  "scale_down_threshold": "2s"
+  "scale_down_threshold": "5m"
 }

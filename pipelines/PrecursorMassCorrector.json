@@ -1,0 +1,39 @@
+{
+  "pipeline": {
+    "name": "PrecursorMassCorrector"
+  },
+  "transform": {
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/FeatureFinder/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "noext=${shortname%.*}",
+    "PrecursorMassCorrector -in /pfs/PeakPicker/${noext}.mzML -feature_in ${filename} -max_charge 1",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 25
+  },
+  "input": {
+    "cross": [
+      {
+        "atom": {
+    "repo": "PeakPicker",
+    "lazy": true,
+    "glob": "/"
+  }
+      },
+      {
+        "atom": {
+    "repo": "FeatureFinder",
+    "glob": "/*"
+  }
+      }
+    ]
+  },
+  "scale_down_threshold": "2s",
+  "max_queue_size": 1
+}
