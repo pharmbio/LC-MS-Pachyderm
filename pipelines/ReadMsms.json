@@ -3,7 +3,7 @@
     "name": "ReadMsms"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:v2.2_cv0.7.54",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/ms2/*;",

@@ -3,7 +3,7 @@
     "name": "AggregateMetFrag"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:v2.2_cv0.7.54",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "zip -r metfrag.zip /pfs/MetFragClient",

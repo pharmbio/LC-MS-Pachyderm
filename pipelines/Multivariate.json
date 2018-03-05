@@ -3,7 +3,7 @@
     "name": "Multivariate"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/multivariate:v2.3.10_cv1.1.18",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/multivariate:v2.3.10_cv1.2.20",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "echo Performing multivariate analysis...",

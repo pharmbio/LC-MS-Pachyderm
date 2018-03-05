@@ -3,7 +3,7 @@
     "name": "CameraFindIsotopes"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:v1.33.3_cv0.10.59",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/CameraFindAdducts/*;",

@@ -3,7 +3,7 @@
     "name": "Passatutto"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/passatutto:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/passatutto:v201604_cv0.1.8",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/AggregateMetFrag/*;",
