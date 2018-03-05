@@ -3,7 +3,7 @@
     "name": "XcmsCorrectRt"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:v3.0.0_cv0.1.76",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:dev_v1.52.0_cv0.8.70",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/XcmsGroupPeaks_1/*;",
