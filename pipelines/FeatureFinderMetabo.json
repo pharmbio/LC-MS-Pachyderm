@@ -10,7 +10,7 @@
     "do",
     "shortname=$(basename $filename)",
     "shortname=${shortname%.*}",
-    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}.featureXML  -algorithm:common:noise_threshold_int 1000 -algorithm:mtd:mass_error_ppm 5 -algorithm:mtd:max_trace_length 30 -algorithm:epd:width_filtering auto -algorithm:ffm:isotope_filtering_model metabolites (5% RMS)",
+    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}.featureXML  -algorithm:common:noise_threshold_int 1000 -algorithm:mtd:mass_error_ppm 5 -algorithm:mtd:max_trace_length 30 -algorithm:epd:width_filtering auto",
     "done"
     ]
   },
