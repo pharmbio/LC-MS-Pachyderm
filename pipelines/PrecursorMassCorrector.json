@@ -1,6 +1,6 @@
 {
   "pipeline": {
-    "name": "PrecursorMassCorrector"
+    "name": "PrecursorMassCorrectorTeee"
   },
   "transform": {
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
@@ -15,7 +15,15 @@
     ]
   },
   "parallelism_spec": {
-    "constant": 25
+    "constant": 2
+  },
+  "resource_requests": {
+    "memory": "1G",
+    "cpu": 1
+  },
+  "resource_limits": {
+    "memory": "1G",
+    "cpu": 1
   },
   "input": {
     "cross": [
