@@ -1,0 +1,36 @@
+{
+  "pipeline": {
+    "name": "Csiingerid"
+  },
+  "transform": {
+    "image": "payamemami/csifingerid:v1",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/Msms2MetFrag/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "firstname=${shortname%.*}",
+    "/usr/local/bin/fingerID.r input=${filename} database=hmdb tryOffline=T output=/pfs/out/${firstname}.csv",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "constant": 25
+  },
+  "resource_requests": {
+    "memory": "2G",
+    "cpu": 1
+  },
+  "resource_limits": {
+    "memory": "2G",
+    "cpu": 1
+  },
+  "input": {
+    "atom": {
+      "repo": "Msms2MetFrag",
+      "glob": "/*"
+    }
+  },
+  "scale_down_threshold": "2s",
+  "max_queue_size": 1
+}

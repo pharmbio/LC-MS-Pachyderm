@@ -17,6 +17,14 @@
   "parallelism_spec": {
     "constant": 25
   },
+  "resource_requests": {
+    "memory": "2G",
+    "cpu": 1
+  },
+  "resource_limits": {
+    "memory": "2G",
+    "cpu": 1
+  },
   "input": {
     "cross": [
       {
