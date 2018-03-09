@@ -1,9 +1,9 @@
 {
   "pipeline": {
-    "name": "Csiingerid"
+    "name": "Csifingerid"
   },
   "transform": {
-    "image": "payamemami/csifingerid:v1",
+    "image": "payamemami/csifingerid:v3",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/Msms2MetFrag/*;",

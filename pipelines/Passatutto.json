@@ -11,7 +11,7 @@
     "shortname=$(basename $filename)",
     "shortname=${shortname%.*}",
     "dash='-'",
-    "/usr/local/bin/metfragPEP.r input=${filename} score=FragmenterScore output=/pfs/out/${shortname}pep.txt",
+    "/usr/local/bin/metfragPEP.r input=${filename} score=score output=/pfs/out/${shortname}pep.txt",
     "done"
     ]
   },

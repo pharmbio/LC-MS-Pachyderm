@@ -6,8 +6,8 @@
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/msnbase:v2.2_cv0.7.54",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "zip -r metfrag.zip /pfs/MetFragClient",
-    "/usr/local/bin/aggregateMetfrag.r inputs=metfrag.zip realNames=metfrag.zip output=/pfs/out/aggmetfrag.csv filetype=zip"
+    "zip -r Csifingerid.zip /pfs/Csifingerid",
+    "/usr/local/bin/aggregateMetfrag.r inputs=Csifingerid.zip realNames=Csifingerid.zip output=/pfs/out/aggmetfrag.csv filetype=zip"
     ]
   },
   "parallelism_spec": {
@@ -15,7 +15,7 @@
   },
   "input": {
     "atom": {
-      "repo": "MetFragClient",
+      "repo": "Csifingerid",
       "glob": "/"
     }
   },
