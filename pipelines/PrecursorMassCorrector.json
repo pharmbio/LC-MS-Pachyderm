@@ -1,20 +1,21 @@
 {
   "pipeline": {
-    "name": "PeakPicker"
+    "name": "PrecursorMassCorrectorTeee"
   },
   "transform": {
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/FileFilter/*;",
+    "for filename in /pfs/PeakPicker/*;",
     "do",
     "shortname=$(basename $filename)",
-    "PeakPickerHiRes -in ${filename} -out /pfs/out/${shortname} -algorithm:signal_to_noise 1",
+    "noext=${shortname%.*}",
+    "PrecursorMassCorrector -in ${filename} -feature_in /pfs/FeatureFinder/${noext}.featureXML -out /pfs/out/${noext}.mzML -max_charge 1",
     "done"
     ]
   },
   "parallelism_spec": {
-    "constant": 25
+    "constant": 2
   },
   "resource_requests": {
     "memory": "1G",
@@ -25,10 +26,20 @@
     "cpu": 1
   },
   "input": {
-    "atom": {
-      "repo": "FileFilter",
-      "glob": "/*"
-    }
+    "cross": [
+      {
+        "atom": {
+    "repo": "PeakPicker",
+    "glob": "/*"
+  }
+      },
+      {
+        "atom": {
+    "repo": "FeatureFinder",
+    "glob": "/"
+  }
+      }
+    ]
   },
   "scale_down_threshold": "2s",
   "max_queue_size": 1

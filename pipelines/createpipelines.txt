@@ -1,5 +1,6 @@
-pachctl create-pipeline -f FileFilter.json
 pachctl create-pipeline -f PeakPickerHiRes.json
+pachctl create-pipeline -f FeatureFinderMetabo.json
+pachctl create-pipeline -f PrecursorMassCorrector.json
 pachctl create-pipeline -f XcmsFindPeaks.json
 pachctl create-pipeline -f XcmsCollectPeaks.json
 pachctl create-pipeline -f XcmsGroupPeaks_1.json
@@ -10,7 +11,6 @@ pachctl create-pipeline -f XcmsDilutionFilter.json
 pachctl create-pipeline -f CameraAnnotatePeaks.json
 pachctl create-pipeline -f CameraGroup.json
 pachctl create-pipeline -f CameraFindAdducts.json
-pachctl create-pipeline -f CameraAnnotatePeaks.json
 pachctl create-pipeline -f CameraFindIsotopes.json
 pachctl create-pipeline -f ReadMsms.json
 pachctl create-pipeline -f MapMsms2Camera.json

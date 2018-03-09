@@ -3,7 +3,7 @@
     "name": "CameraPrepareOutputMulti"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/camera:v1.33.3_cv0.10.59",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "dte=$(date '+%d_%m_%Y_%H_%M')",

@@ -3,7 +3,7 @@
     "name": "MetFragClient"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/metfrag-cli-batch:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/metfrag-cli-batch:v2.4.3_cv0.6.52",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/Msms2MetFrag/*;",
@@ -16,6 +16,14 @@
   },
   "parallelism_spec": {
     "constant": 25
+  },
+  "resource_requests": {
+    "memory": "2G",
+    "cpu": 1
+  },
+  "resource_limits": {
+    "memory": "2G",
+    "cpu": 1
   },
   "input": {
     "cross": [

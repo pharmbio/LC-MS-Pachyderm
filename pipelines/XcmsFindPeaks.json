@@ -3,10 +3,10 @@
     "name": "XcmsFindPeaks"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:dev_v1.52.0_cv0.8.70",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/PeakPicker/*;",
+    "for filename in /pfs/PrecursorMassCorrector/*;",
     "do",
     "dash='-'",
     "shortname=$(basename $filename)",
@@ -18,6 +18,14 @@
   "parallelism_spec": {
     "constant": 25
   },
+  "resource_requests": {
+    "memory": "1G",
+    "cpu": 1
+  },
+  "resource_limits": {
+    "memory": "1G",
+    "cpu": 1
+  },
   "input": {
     "cross": [
       {
@@ -28,7 +36,7 @@
       },
       {
         "atom": {
-    "repo": "PeakPicker",
+    "repo": "PrecursorMassCorrector",
     "glob": "/*"
   }
       }

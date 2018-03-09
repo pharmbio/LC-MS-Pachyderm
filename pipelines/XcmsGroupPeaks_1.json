@@ -3,7 +3,7 @@
     "name": "XcmsGroupPeaks_1"
   },
   "transform": {
-    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:latest",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/xcms:dev_v1.52.0_cv0.8.70",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/XcmsCollectPeaks/*;",
