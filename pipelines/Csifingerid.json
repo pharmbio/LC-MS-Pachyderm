@@ -3,7 +3,7 @@
     "name": "Csifingerid"
   },
   "transform": {
-    "image": "payamemami/csifingerid:v3",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/csifingerid:dev_v4.0_cv4.0.2",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/Msms2MetFrag/*;",
