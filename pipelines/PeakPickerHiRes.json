@@ -6,7 +6,7 @@
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/FileFilter/*;",
+    "for filename in /pfs/mrpo/*;",
     "do",
     "shortname=$(basename $filename)",
     "PeakPickerHiRes -in ${filename} -out /pfs/out/${shortname} -algorithm:signal_to_noise 1",
@@ -26,7 +26,7 @@
   },
   "input": {
     "atom": {
-      "repo": "FileFilter",
+      "repo": "mrpo",
       "glob": "/*"
     }
   },

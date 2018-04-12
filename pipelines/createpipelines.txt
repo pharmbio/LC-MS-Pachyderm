@@ -15,7 +15,7 @@ pachctl create-pipeline -f CameraFindIsotopes.json
 pachctl create-pipeline -f ReadMsms.json
 pachctl create-pipeline -f MapMsms2Camera.json
 pachctl create-pipeline -f Msms2MetFrag.json
-pachctl create-pipeline -f MetFragClient.json
+pachctl create-pipeline -f Csifingerid.json
 pachctl create-pipeline -f AggregateMetFrag.json
 pachctl create-pipeline -f Passatutto.json
 pachctl create-pipeline -f CameraPrepareOutputMulti.json
