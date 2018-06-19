@@ -6,6 +6,13 @@ In this page we introduce a start-to-end LC-MS-analysis workflow that you can ru
 -	A running Kubernetes cluster with Pachyderm deployed as a service. Note that this will not work on Minikube standard settings. A Cloud environment is highly desirable.
 -	The Pachyderm CLI tool: `pachctl` correctly configured to talk with the cluster.
 
+Relevant sources:
+
+-	[KubeNow GitHub](https://github.com/kubenow/KubeNow) A simplified way of deploying Kubernetes on cloud-agnostic infrastructures
+-	[Pachyderm Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/pachyderm) A Helm Chart for deploying Pachyderm on Kubernetes as a service
+-	[Pachyderm Docs](http://docs.pachyderm.io/en/v1.7.3/index.html) Official documentation of Pachyderm
+
+
 ### Ingest the dataset from MetaboLights
 
 For reviewing purposes, the dataset can be downloaded from MetaboLights by using a authentication token.
@@ -36,7 +43,7 @@ pachctl put-file ms1 master -c -r -p 3 -f .
 popd ms1
 ```
 
-Repeat the previous procedure for the ms2 data and the metadata:
+Repeat the previous procedure for the `ms2` data and the metadata:
 
 ```bash
 # ms2 data upload 
@@ -56,7 +63,7 @@ popd params
 
 ### Process the data
 
-Now that the data is in the repository, it’s time to use the run the workflow. Several jobs compose the pipeline, which can be found in the `./pipelines`directory. You can learn how to customise your pipelines in detail by visiting: http://docs.pachyderm.io/en/v1.7.3/reference/pipeline_spec.html. A list of all the jobs to be executed can be found in `./NOTES.txt`
+Now that the data is in the repository, it’s time to use the run the workflow. Several jobs compose the pipeline, which can be found in the `./pipelines`directory. You can learn how to customise your pipelines in detail by visiting the official [Pachyderm docs](http://docs.pachyderm.io/en/v1.7.3/reference/pipeline_spec.html). A list of all the jobs to be executed can be found in `./NOTES.txt`
 
 A pipeline stage can be run by using the following command:
 ```bash
