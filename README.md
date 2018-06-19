@@ -1,21 +1,22 @@
 # LC-MS-Pachyderm
+
 In this page we introduce a start-to-end LC-MS-analysis workflow that you can run using [Pachyderm](https://github.com/pachyderm/pachyderm), a distributed data-processing tool built on software containers that enables scalable and reproducible pipelines.
 
 ## Prerequisites
 
 -	A running Kubernetes cluster with Pachyderm deployed as a service. Note that this will not work on Minikube standard settings. A Cloud environment is highly desirable.
--	The Pachyderm CLI tool: `pachctl` correctly configured to talk with the cluster.
+-	The Pachyderm command line tool: `pachctl` correctly configured to talk with the cluster.
 
 Relevant sources:
 
 -	[KubeNow GitHub](https://github.com/kubenow/KubeNow) A simplified way of deploying Kubernetes on cloud-agnostic infrastructures
 -	[Pachyderm Helm Chart](https://github.com/kubernetes/charts/tree/master/stable/pachyderm) A Helm Chart for deploying Pachyderm on Kubernetes as a service
 -	[Pachyderm Docs](http://docs.pachyderm.io/en/v1.7.3/index.html) Official documentation of Pachyderm
+-	[PhenoMeNal VRE Plugin](https://github.com/phnmnl/KubeNow-plugin) PhenoMeNal VRE deployment as a plugin for KubeNow. This plugin includes the possibility to deploy Pachyderm as a service.
 
 
 ### Ingest the dataset from MetaboLights
-
-For reviewing purposes, the dataset can be downloaded from MetaboLights by using a authentication token.
+Note that for uploading the data to the `PFS`, it is advisable to interact with Pachyderm from the master node. For reviewing purposes, the dataset can be downloaded from MetaboLights by using a authentication token.
 
 1. Start by cloning this repository:
 ```bash
@@ -31,8 +32,7 @@ sh download-ms1.sh <token>
 sh download-ms2.sh <token>
 ```
 
-### Add the dataset to the Pachyderm File System
-
+### Add the dataset to the Pachyderm File System (PFS)
 Create a repo called `ms1` and push the dataset into it:
 
 ```bash
