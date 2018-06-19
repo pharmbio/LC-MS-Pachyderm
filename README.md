@@ -40,17 +40,17 @@ Create a repo called `ms1` and push the dataset into it:
 pushd ms1
 pachctl create-repo ms1
 pachctl put-file ms1 master -c -r -p 3 -f . 
-popd ms1
+popd
 ```
 
-Repeat the previous procedure for the `ms2` data and the metadata:
+Repeat the previous procedure for the `ms2` data and the `metadata`:
 
 ```bash
 # ms2 data upload 
 pushd ms2
 pachctl create-repo ms2
 pachctl put-file ms2 master -c -r -p 3 -f . 
-popd ms2
+popd
 ```
 
 ```bash
@@ -58,7 +58,7 @@ popd ms2
 pushd params
 pachctl create-repo params
 pachctl put-file params master -c -r -p 3 -f . 
-popd params
+popd
 ```
 
 ### Process the data
